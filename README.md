@@ -1,4 +1,4 @@
-# thots - Convex Backend Implementation
+# blueday - Convex Backend Implementation
 
 This is a Convex backend implementation for the thots application with invite-code signup, session-based authentication, and post creation functionality.
 
