@@ -3,36 +3,27 @@
             <div id="time" class="meta"></div>
         <div id="post" class="post"></div>
     </div>
-    <style>
-        :root {
+<style>
+:root {
   --black: #0a0a0a;
   --white: #ffffff;
 }
-body {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  max-width: 600px;
-  text-align: center;
-  justify-content: center;
-  vertical-align: middle;
-  height: 100vh;
-  margin: auto;
-  padding: 0;
-  font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  color: var(--black);
-  background-color: var(--white)
+div {
+  font-size: 16px;
+  color: var(--black)
 }
-a {
+.meta {
+  color: #808080
+}
+.post {
   color: var(--black)
 }
 @media (prefers-color-scheme: dark) {
-  body {
-    color: var(--white);
-    background-color: var(--black);
-  }
-  a {
-    color: var(--white)
-  }
+.meta {
+  color: #808080
 }
-    </style>
+.post {
+  color: var(--white)
+}
+}
+</style>

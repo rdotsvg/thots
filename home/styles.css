@@ -2,6 +2,7 @@
   --black: #0a0a0a;
   --white: #ffffff;
 }
+
 body {
   display: flex;
   flex-direction: column;
@@ -17,9 +18,24 @@ body {
   color: var(--black);
   background-color: var(--white)
 }
+
 a {
   color: var(--black)
 }
+
+.comp {
+  border-radius: 10px;
+  border: 1px solid var(--white);
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  padding: 0 10px;
+  box-sizing: border-box
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: var(--white);
