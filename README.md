@@ -1,4 +1,4 @@
-# thots - Convex Backend + Vite/Svelte Frontend
+# blueday - Convex Backend Implementation
 
 This is a thots application with a Convex backend and a Vite + Svelte frontend. Features include invite-code signup, session-based authentication, and post creation functionality.
 
