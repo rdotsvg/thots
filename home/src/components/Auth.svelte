@@ -46,7 +46,7 @@
 </script>
 
 <div class="auth-container">
-  <h1>thots</h1>
+  <h1>blueday</h1>
   
   <div class="auth-box">
     <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>

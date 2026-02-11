@@ -8,7 +8,7 @@ if (!CONVEX_URL) {
 
 export const convex = new ConvexClient(CONVEX_URL || '');
 
-export const SESSION_KEY = 'thots_session';
+export const SESSION_KEY = 'blueday_session';
 
 export function getSession() {
   return localStorage.getItem(SESSION_KEY);

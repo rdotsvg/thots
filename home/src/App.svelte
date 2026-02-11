@@ -72,13 +72,13 @@
 {:else}
   <div class="feed-container">
     <header>
-      <h1>thots</h1>
+      <h1>blueday</h1>
       <button class="signout" on:click={handleSignOut}>sign out</button>
     </header>
     
     <div class="feed">
       {#if posts.length === 0}
-        <p class="empty">no thots yet. be the first!</p>
+        <p class="empty">no posts yet. be the first!</p>
       {:else}
         {#each posts as post (post._id)}
           <Post 

@@ -1,8 +1,8 @@
-# thots Backend Documentation
+# blueday Backend Documentation
 
 ## Overview
 
-thots uses Convex for its backend with session-based authentication and a simple post/feed system.
+blueday uses Convex for its backend with session-based authentication and a simple post/feed system.
 
 ---
 
@@ -237,10 +237,10 @@ Store the `sessionId` from signUp/signIn responses in `localStorage`:
 
 ```typescript
 // After signUp or signIn:
-localStorage.setItem("thots_session", response.sessionId);
+localStorage.setItem("blueday_session", response.sessionId);
 
 // Before API calls:
-const sessionId = localStorage.getItem("thots_session");
+const sessionId = localStorage.getItem("blueday_session");
 ```
 
 ### Time Formatting
