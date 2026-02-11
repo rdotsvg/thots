@@ -1,0 +1,43 @@
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  color: var(--black);
+  background-color: var(--white);
+  min-height: 100vh;
+}
+
+.comp {
+  border-radius: 10px;
+  border: 1px solid var(--black);
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: var(--white);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--white);
+    background-color: var(--black);
+  }
+  
+  .comp {
+    border-color: var(--white);
+    background-color: var(--black);
+  }
+}

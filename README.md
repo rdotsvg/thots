@@ -1,6 +1,6 @@
 # blueday - Convex Backend Implementation
 
-This is a Convex backend implementation for the thots application with invite-code signup, session-based authentication, and post creation functionality.
+This is a thots application with a Convex backend and a Vite + Svelte frontend. Features include invite-code signup, session-based authentication, and post creation functionality.
 
 ## Project Structure
 
@@ -10,13 +10,26 @@ This is a Convex backend implementation for the thots application with invite-co
 │   ├── schema.ts              # Database schema (users, invites, sessions, posts)
 │   └── functions.ts           # Convex mutations and queries
 ├── docs/
-│   └── backend.md             # Complete API documentation
-├── home/
-│   ├── index.html             # Home page with authentication & feed
-│   ├── frontend-example.js    # Frontend integration utilities
-│   └── types.ts               # TypeScript types for frontend
-├── post.svelte               # Post component with ID mapping (#user, #time, #post)
-└── index.html                # Landing page
+│   ├── backend.md             # Backend API documentation
+│   └── frontend.md            # Frontend documentation
+├── home/                      # Vite + Svelte frontend
+│   ├── index.html             # Entry HTML
+│   ├── package.json           # Frontend dependencies
+│   ├── vite.config.js         # Vite configuration
+│   ├── .env.example           # Environment variables template
+│   └── src/
+│       ├── main.js            # App entry point
+│       ├── App.svelte         # Root component
+│       ├── app.css            # Global styles
+│       ├── lib/
+│       │   └── convex.js      # Convex client & session utilities
+│       └── components/
+│           ├── Auth.svelte    # Sign in/up component
+│           ├── Post.svelte    # Post display component
+│           └── Composer.svelte # Post creation component
+├── post.svelte               # Reference Post component (#user, #time, #post)
+├── index.html                # Landing page (static)
+└── landing.css               # Landing page styles
 ```
 
 ## Quick Start
@@ -63,18 +76,46 @@ This is a Convex backend implementation for the thots application with invite-co
    ```
 4. **Repeat to create more codes**
 
-### 4. Test the Application
+### 4. Set up Frontend Environment
 
-1. **Start the development server:**
+1. **Navigate to the home directory:**
+   ```bash
+   cd home
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Edit `.env.local` and set your `VITE_CONVEX_URL`:
+   ```
+   VITE_CONVEX_URL=https://your-deployment.convex.cloud
+   ```
+
+### 5. Run the Application
+
+1. **Start the Convex dev server:**
    ```bash
    npx convex dev
    ```
 
-2. **Visit the landing page:** http://localhost:3000
+2. **In a new terminal, start the frontend:**
+   ```bash
+   cd home
+   npm run dev
+   ```
 
-3. **Navigate to home page:** http://localhost:3000/home
+3. **Visit the landing page:** http://localhost:3000 (or your Convex dev port)
 
-4. **Use invite codes to sign up and test**
+4. **Navigate to home page:** http://localhost:5173
+
+5. **Use invite codes to sign up and test**
 
 ## Core Features
 
@@ -98,24 +139,60 @@ This is a Convex backend implementation for the thots application with invite-co
 - Fast queries with proper indexing
 - Includes user handle and timestamp
 
+## Environment Variables
+
+The frontend requires the following environment variable:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `VITE_CONVEX_URL` | Yes | Your Convex deployment URL (e.g., `https://lucky-moth-123.convex.cloud`) |
+
+### Setting up Environment Variables
+
+1. Navigate to the `home` directory
+2. Copy `.env.example` to `.env.local`
+3. Set your `VITE_CONVEX_URL` from the Convex dashboard
+
+```bash
+cd home
+cp .env.example .env.local
+# Edit .env.local with your Convex URL
+```
+
+---
+
 ## Frontend Integration
 
 ### post.svelte ID Mapping
 
-The `post.svelte` component uses specific IDs for rendering posts:
+Both the reference `post.svelte` and the frontend `Post.svelte` component use specific IDs for rendering posts:
 
 | ID | Purpose | CSS Class | Content |
 |----|---------|-----------|---------|
 | `#user` | User handle display | `.meta` | e.g., "@alice" |
-| `#time` | Timestamp display | `.meta` | Unix timestamp |
-| `#post` | Post content display | `.post` | Post text |
+| `#time` | Timestamp display | `.meta` | Formatted relative time (e.g., "2h") |
+| `#post` | Post content display | `.post` | Post text (max 100 chars) |
 
-**Usage:**
+**Tags/Classes used:**
+- `.meta` - Metadata styling (gray color for handle and time)
+- `.post` - Post content styling
+- `.post-wrapper` - Container for Post.svelte component
+
+**Reference implementation (post.svelte):**
 ```html
 <div>
-    <div id="user" class="meta">{{post.handle}}</div>
-    <div id="time" class="meta">{{formatTime(post.createdAt)}}</div>
-    <div id="post" class="post">{{post.content}}</div>
+    <div id="user" class="meta"></div>
+    <div id="time" class="meta"></div>
+    <div id="post" class="post"></div>
+</div>
+```
+
+**Frontend implementation (home/src/components/Post.svelte):**
+```svelte
+<div class="post-wrapper">
+    <div id="user" class="meta">{handle}</div>
+    <div id="time" class="meta">{formatTime(createdAt)}</div>
+    <div id="post" class="post">{content}</div>
 </div>
 ```
 
@@ -155,6 +232,34 @@ The `post.svelte` component uses specific IDs for rendering posts:
    ```javascript
    const posts = await convex.query('latestFeed');
    ```
+
+### Composer Component
+
+The composer uses the `.comp` class for fixed bottom positioning:
+
+| Class | Purpose |
+|-------|---------|
+| `.comp` | Fixed bottom container, centered with border |
+
+**Features:**
+- Fixed at bottom of viewport
+- 100-character limit for posts
+- Character counter display
+- 90% width, max 600px
+
+### Session Storage
+
+The session ID is stored in `localStorage`:
+
+```javascript
+// Key used
+const SESSION_KEY = 'thots_session';
+
+// Stored value
+localStorage.setItem('thots_session', sessionId);
+```
+
+---
 
 ## API Reference
 
