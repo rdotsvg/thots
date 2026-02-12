@@ -1,8 +1,8 @@
-# thots Frontend Documentation
+# blueday Frontend Documentation
 
 ## Overview
 
-The thots frontend is a Vite + Svelte application located in `/home` that provides authentication, a feed view, and post creation functionality.
+The blueday frontend is a Vite + Svelte application located in `/home` that provides authentication, a feed view, and post creation functionality.
 
 ---
 
@@ -81,7 +81,7 @@ Renders:
 
 ## Session Storage
 
-Sessions are stored in `localStorage` under the key `thots_session`.
+Sessions are stored in `localStorage` under the key `blueday_session`.
 
 ### Key Functions
 

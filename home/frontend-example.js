@@ -1,5 +1,5 @@
 /**
- * Frontend Integration Example for thots
+ * Frontend Integration Example for blueday
  * 
  * This file shows how to integrate the Convex backend with the post.svelte component
  * and the existing HTML/CSS structure.
@@ -11,12 +11,12 @@
  */
 
 // Example frontend integration (placeholder - would need full Convex setup)
-const THOTS_FRONTEND_EXAMPLE = `
+const BLUEDAY_FRONTEND_EXAMPLE = `
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="/home/styles.css">
-    <title>thots - Home</title>
+    <title>blueday - Home</title>
 </head>
 <body>
     <!-- Auth Section -->
@@ -58,11 +58,11 @@ const THOTS_FRONTEND_EXAMPLE = `
         
         // Session management
         function getSessionId() {
-            return localStorage.getItem('thots_session');
+            return localStorage.getItem('blueday_session');
         }
         
         function setSessionId(sessionId) {
-            localStorage.setItem('thots_session', sessionId);
+            localStorage.setItem('blueday_session', sessionId);
         }
         
         // Authentication functions
@@ -99,7 +99,7 @@ const THOTS_FRONTEND_EXAMPLE = `
             try {
                 const sessionId = getSessionId();
                 // await convex.mutation('signOut', { sessionId });
-                localStorage.removeItem('thots_session');
+                localStorage.removeItem('blueday_session');
                 
                 showAuthSection();
             } catch (error) {
@@ -229,10 +229,10 @@ const THOTS_FRONTEND_EXAMPLE = `
 `;
 
 // Export for use in actual implementation
-export { THOTS_FRONTEND_EXAMPLE };
+export { BLUEDAY_FRONTEND_EXAMPLE };
 
 // Utility functions that can be used independently
-export const thotsUtils = {
+export const bluedayUtils = {
   /**
    * Format a timestamp for display (relative time)
    */

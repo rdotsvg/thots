@@ -1,5 +1,5 @@
 /**
- * Frontend TypeScript Types for thots
+ * Frontend TypeScript Types for blueday
  * 
  * This file provides type definitions for Convex responses and
  * maps to the post.svelte component's HTML IDs.

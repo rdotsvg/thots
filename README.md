@@ -1,6 +1,6 @@
 # blueday - Convex Backend Implementation
 
-This is a thots application with a Convex backend and a Vite + Svelte frontend. Features include invite-code signup, session-based authentication, and post creation functionality.
+This is a blueday application with a Convex backend and a Vite + Svelte frontend. Features include invite-code signup, session-based authentication, and post creation functionality.
 
 ## Project Structure
 
@@ -206,7 +206,7 @@ Both the reference `post.svelte` and the frontend `Post.svelte` component use sp
      password: 'password123'
    });
    
-   localStorage.setItem('thots_session', result.sessionId);
+   localStorage.setItem('blueday_session', result.sessionId);
    ```
 
 2. **Sign In:**
@@ -216,15 +216,15 @@ Both the reference `post.svelte` and the frontend `Post.svelte` component use sp
      password: 'password123'
    });
    
-   localStorage.setItem('thots_session', result.sessionId);
+   localStorage.setItem('blueday_session', result.sessionId);
    ```
 
 3. **Create Post:**
    ```javascript
-   const sessionId = localStorage.getItem('thots_session');
+   const sessionId = localStorage.getItem('blueday_session');
    await convex.mutation('createPost', {
      sessionId,
-     content: 'Hello thots!'
+     content: 'Hello blueday!'
    });
    ```
 
@@ -253,10 +253,10 @@ The session ID is stored in `localStorage`:
 
 ```javascript
 // Key used
-const SESSION_KEY = 'thots_session';
+const SESSION_KEY = 'blueday_session';
 
 // Stored value
-localStorage.setItem('thots_session', sessionId);
+localStorage.setItem('blueday_session', sessionId);
 ```
 
 ---
@@ -378,4 +378,4 @@ await query("db", "posts").order("desc").collect();
 
 ## License
 
-This implementation is part of the thots project. See LICENSE file for details.
+This implementation is part of the blueday project. See LICENSE file for details.

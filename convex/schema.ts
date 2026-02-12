@@ -1,7 +1,7 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
-// Schema definition for thots application
+// Schema definition for blueday application
 export default defineSchema({
   // Users table - stores user information
   users: defineTable({
@@ -27,7 +27,7 @@ export default defineSchema({
     createdAt: v.number(),
   }),
 
-  // Posts table - stores thots posts
+  // Posts table - stores posts
   posts: defineTable({
     userId: v.string(), // reference to users table
     handle: v.string(), // denormalized for faster queries
